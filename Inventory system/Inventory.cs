@@ -11,6 +11,8 @@ namespace Inventory_system
         int damage = 10;
         float gold = 0.00f;
         float minGold = 0.00f;
+        int weight = 0;
+        int maxWeight = 25;
         public void Menu()
         {
             string choice = "";
@@ -58,7 +60,7 @@ namespace Inventory_system
         {
             string choice = "";
             //choice weapon
-            Console.WriteLine("Equip a weapon! (1: Dagger / 2: Sword / 3: Bow / 4: Warhammer) press 0 to cancel.");
+            Console.WriteLine("Equip a weapon! (1: Dagger / 2: Sword / 3: Bow / 4: Warhammer /5: Big Thick Boi) press 0 to cancel.");
             choice = Console.ReadLine();
             Console.WriteLine("");
 
@@ -69,27 +71,78 @@ namespace Inventory_system
             }
             else if (choice == "1")
             {
-                damage = 15;
-                Console.WriteLine(" You've equided a dagger");
-                Console.WriteLine("Damage: " + damage);
+                if (weight + 5 <= maxWeight)
+                {
+                    damage = 15;
+                    Console.WriteLine(" You've equided a dagger");
+                    Console.WriteLine("Damage: " + damage);
+                    weight += 5;
+                    Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
             }
             else if (choice == "2")
             {
-                    damage = 20;
+                if (weight + 10 <= maxWeight)
+                {
+                damage = 20;
                 Console.WriteLine(" You've equided a sword");
                 Console.WriteLine("Damage: " + damage);
+                weight += 10;
+                Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
             }
             else if (choice == "3")
             {
+                if (weight + 15 <= maxWeight)
+                {
                 damage = 25;
                 Console.WriteLine(" You've equided a bow");
                 Console.WriteLine("Damage: " + damage);
+                weight += 15;
+                Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
             }
             else if (choice == "4")
             {
+                if (weight + 20 <= maxWeight)
+                {
                 damage = 30;
                 Console.WriteLine(" You've equided a warhammer");
                 Console.WriteLine("Damage: " + damage);
+                weight += 20;
+                Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
+            }
+            else if (choice == "5")
+            {
+                if (weight + 100 <= maxWeight)
+                {
+                    damage = 200;
+                    Console.WriteLine(" You've equided a big thick Boi");
+                    Console.WriteLine("Damage: " + damage);
+                    weight += 100;
+                    Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
             }
             else
             {
