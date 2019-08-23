@@ -13,10 +13,11 @@ namespace Inventory_system
         float minGold = 0.00f;
         int weight = 0;
         int maxWeight = 25;
+        int defence = 0;
         public void Menu()
         {
             string choice = "";
-            
+
 
             while (choice != "0")
             {
@@ -27,6 +28,7 @@ namespace Inventory_system
                 Console.WriteLine("2: Unequip Weapon");
                 Console.WriteLine("3: Add Gold");
                 Console.WriteLine("4: Subtract Gold");
+                Console.WriteLine("5: Equip Armor");
 
                 //get input
                 choice = Console.ReadLine();
@@ -53,6 +55,10 @@ namespace Inventory_system
                     Console.Write("How much gold? ");
                     float subtractedGold = Convert.ToSingle(Console.ReadLine());
                     SubtractGold(subtractedGold);
+                }
+                else if (choice == "5")
+                {
+                    EquipArmor();
                 }
             }
         }
@@ -88,11 +94,11 @@ namespace Inventory_system
             {
                 if (weight + 10 <= maxWeight)
                 {
-                damage = 20;
-                Console.WriteLine(" You've equided a sword");
-                Console.WriteLine("Damage: " + damage);
-                weight += 10;
-                Console.WriteLine("Weight: " + weight);
+                    damage = 20;
+                    Console.WriteLine(" You've equided a sword");
+                    Console.WriteLine("Damage: " + damage);
+                    weight += 10;
+                    Console.WriteLine("Weight: " + weight);
                 }
                 else
                 {
@@ -103,11 +109,11 @@ namespace Inventory_system
             {
                 if (weight + 15 <= maxWeight)
                 {
-                damage = 25;
-                Console.WriteLine(" You've equided a bow");
-                Console.WriteLine("Damage: " + damage);
-                weight += 15;
-                Console.WriteLine("Weight: " + weight);
+                    damage = 25;
+                    Console.WriteLine(" You've equided a bow");
+                    Console.WriteLine("Damage: " + damage);
+                    weight += 15;
+                    Console.WriteLine("Weight: " + weight);
                 }
                 else
                 {
@@ -118,11 +124,11 @@ namespace Inventory_system
             {
                 if (weight + 20 <= maxWeight)
                 {
-                damage = 30;
-                Console.WriteLine(" You've equided a warhammer");
-                Console.WriteLine("Damage: " + damage);
-                weight += 20;
-                Console.WriteLine("Weight: " + weight);
+                    damage = 30;
+                    Console.WriteLine(" You've equided a warhammer");
+                    Console.WriteLine("Damage: " + damage);
+                    weight += 20;
+                    Console.WriteLine("Weight: " + weight);
                 }
                 else
                 {
@@ -180,7 +186,100 @@ namespace Inventory_system
                 gold = minGold;
             }
             Console.WriteLine("Gold: " + gold);
-            
+
+        }
+        public void EquipArmor()
+        {
+            string choice = "";
+            //choice armor
+            Console.WriteLine("Equip armor! (1: Leather / 2: Elven / 3: Dragon Scale / 4: Dragon Bone /5: The Souls of the Innocent) press 0 to cancel.");
+            choice = Console.ReadLine();
+            Console.WriteLine("");
+
+            //check input
+            if (choice == "0")
+            {
+                Console.WriteLine("Action canceled");
+            }
+            else if (choice == "1")
+            {
+                if (weight + 5 <= maxWeight)
+                {
+                    defence = 15;
+                    Console.WriteLine(" You've equided leather armor");
+                    Console.WriteLine("Defence: " + defence);
+                    weight += 5;
+                    Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
+            }
+            else if (choice == "2")
+            {
+                if (weight + 10 <= maxWeight)
+                {
+                    defence = 20;
+                    Console.WriteLine(" You've equided elven armor");
+                    Console.WriteLine("Defence: " + defence);
+                    weight += 10;
+                    Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
+            }
+            else if (choice == "3")
+            {
+                if (weight + 15 <= maxWeight)
+                {
+                    defence = 25;
+                    Console.WriteLine(" You've equided dragon scale armor");
+                    Console.WriteLine("Defence: " + defence);
+                    weight += 15;
+                    Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
+            }
+            else if (choice == "4")
+            {
+                if (weight + 20 <= maxWeight)
+                {
+                    defence = 30;
+                    Console.WriteLine(" You've equided dragon bone armor");
+                    Console.WriteLine("defence: " + defence);
+                    weight += 20;
+                    Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
+            }
+            else if (choice == "5")
+            {
+                if (weight + 100 <= maxWeight)
+                {
+                    defence = 200;
+                    Console.WriteLine(" You've equided the souls of the innocent");
+                    Console.WriteLine("defence: " + defence);
+                    weight += 100;
+                    Console.WriteLine("Weight: " + weight);
+                }
+                else
+                {
+                    Console.WriteLine("Item is too heavy. Cannot equip.");
+                }
+            }
+            else
+            {
+                EquipWeapon();
+            }
         }
     }
 }
