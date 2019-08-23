@@ -13,9 +13,11 @@ namespace Inventory_system
         float minGold = 0.00f;
         int weightWeapon = 0;
         int weightArmor = 0;
+        int weightPotion = 0;
         int weightTotal = 0;
         int maxWeight = 50;
         int defence = 0;
+        int potion = 0;
         public void Menu()
         {
             string choice = "";
@@ -32,6 +34,8 @@ namespace Inventory_system
                 Console.WriteLine("4: Subtract Gold");
                 Console.WriteLine("5: Equip Armor");
                 Console.WriteLine("6: Unequip Armor");
+                Console.WriteLine("7: Buy potion");
+                Console.WriteLine("8: Drink potion");
 
                 //get input
                 choice = Console.ReadLine();
@@ -67,6 +71,14 @@ namespace Inventory_system
                 {
                     UnequipArmor();
                 }
+                else if (choice == "7")
+                {
+                    buyPotion();
+                }
+                else if (choice == "8")
+                {
+                    drinkPotion();
+                }
             }
         }
         public void EquipWeapon()
@@ -84,13 +96,13 @@ namespace Inventory_system
             }
             else if (choice == "1")
             {
-                if (weightArmor + 5 <= maxWeight)
+                if (weightArmor + weightPotion + 5 <= maxWeight)
                 {
                     damage = 15;
                     Console.WriteLine(" You've equided a dagger");
                     Console.WriteLine("Damage: " + damage);
                     weightWeapon += 5;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -100,13 +112,13 @@ namespace Inventory_system
             }
             else if (choice == "2")
             {
-                if (weightArmor + 10 <= maxWeight)
+                if (weightArmor + weightPotion + 10 <= maxWeight)
                 {
                     damage = 20;
                     Console.WriteLine(" You've equided a sword");
                     Console.WriteLine("Damage: " + damage);
                     weightWeapon += 10;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -116,13 +128,13 @@ namespace Inventory_system
             }
             else if (choice == "3")
             {
-                if (weightArmor + 15 <= maxWeight)
+                if (weightArmor + weightPotion + 15 <= maxWeight)
                 {
                     damage = 25;
                     Console.WriteLine(" You've equided a bow");
                     Console.WriteLine("Damage: " + damage);
                     weightWeapon += 15;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -132,13 +144,13 @@ namespace Inventory_system
             }
             else if (choice == "4")
             {
-                if (weightArmor + 20 <= maxWeight)
+                if (weightArmor + weightPotion + 20 <= maxWeight)
                 {
                     damage = 30;
                     Console.WriteLine(" You've equided a warhammer");
                     Console.WriteLine("Damage: " + damage);
                     weightWeapon += 20;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -148,13 +160,13 @@ namespace Inventory_system
             }
             else if (choice == "5")
             {
-                if (weightArmor + 100 <= maxWeight)
+                if (weightArmor + weightPotion + 100 <= maxWeight)
                 {
                     damage = 200;
                     Console.WriteLine(" You've equided a big thick Boi");
                     Console.WriteLine("Damage: " + damage);
                     weightWeapon += 100;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -215,13 +227,13 @@ namespace Inventory_system
             }
             else if (choice == "1")
             {
-                if (weightWeapon + 5 <= maxWeight)
+                if (weightWeapon + weightPotion + 5 <= maxWeight)
                 {
                     defence = 15;
                     Console.WriteLine(" You've equided leather armor");
                     Console.WriteLine("Defence: " + defence);
                     weightArmor += 5;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -231,13 +243,13 @@ namespace Inventory_system
             }
             else if (choice == "2")
             {
-                if (weightWeapon + 10 <= maxWeight)
+                if (weightWeapon + weightPotion + 10 <= maxWeight)
                 {
                     defence = 20;
                     Console.WriteLine(" You've equided elven armor");
                     Console.WriteLine("Defence: " + defence);
                     weightArmor += 10;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -247,13 +259,13 @@ namespace Inventory_system
             }
             else if (choice == "3")
             {
-                if (weightWeapon + 15 <= maxWeight)
+                if (weightWeapon + weightPotion + 15 <= maxWeight)
                 {
                     defence = 25;
                     Console.WriteLine(" You've equided dragon scale armor");
                     Console.WriteLine("Defence: " + defence);
                     weightArmor += 15;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -263,13 +275,13 @@ namespace Inventory_system
             }
             else if (choice == "4")
             {
-                if (weightWeapon + 20 <= maxWeight)
+                if (weightWeapon + weightPotion + 20 <= maxWeight)
                 {
                     defence = 30;
                     Console.WriteLine(" You've equided dragon bone armor");
                     Console.WriteLine("defence: " + defence);
                     weightArmor += 20;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -279,13 +291,13 @@ namespace Inventory_system
             }
             else if (choice == "5")
             {
-                if (weightWeapon + 100 <= maxWeight)
+                if (weightWeapon + weightPotion + 100 <= maxWeight)
                 {
                     defence = 200;
                     Console.WriteLine(" You've equided the souls of the innocent");
                     Console.WriteLine("defence: " + defence);
                     weightArmor += 100;
-                    weightTotal = weightWeapon + weightArmor;
+                    weightTotal = weightWeapon + weightArmor + weightPotion;
                     Console.WriteLine("Weight: " + weightTotal);
                 }
                 else
@@ -310,6 +322,45 @@ namespace Inventory_system
                 Console.WriteLine("Unequiped armor!");
                 defence = 0;
                 Console.WriteLine("Defence: " + defence);
+            }
+        }
+        public void buyPotion()
+        {
+            if (gold >= 100)
+            {
+                Console.WriteLine("You bought a potion!");
+                potion++;
+                weightPotion++;
+                Console.WriteLine("Potions: " + potion);
+                gold -= 100;
+                Console.WriteLine("Gold: " + gold);
+                weightTotal = weightWeapon + weightArmor + weightPotion;
+                Console.WriteLine("Weight: " + weightTotal);
+            }
+            else
+            {
+                Console.WriteLine("Not enough gold!");
+                defence = 0;
+                Console.WriteLine("Potions: " + potion);
+                Console.WriteLine("Gold: " + gold);
+            }
+        }
+        public void drinkPotion()
+        {
+            if (potion >= 1)
+            {
+                Console.WriteLine("You drank a potion!");
+                potion--;
+                weightPotion--;
+                maxWeight += 5;
+                Console.WriteLine("Potions: " + potion);
+                weightTotal = weightWeapon + weightArmor + weightPotion;
+                Console.WriteLine("Weight: " + weightTotal);
+                Console.WriteLine("Max weight: " + maxWeight);
+            }
+            else
+            {
+                Console.WriteLine("No potions!");
             }
         }
     }
