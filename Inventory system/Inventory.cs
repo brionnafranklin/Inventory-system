@@ -73,11 +73,15 @@ namespace Inventory_system
                 }
                 else if (choice == "7")
                 {
-                    buyPotion();
+                    Console.Write("How many? ");
+                    int boughtPotion = Convert.ToInt32(Console.ReadLine());
+                    buyPotion(boughtPotion);
                 }
                 else if (choice == "8")
                 {
-                    drinkPotion();
+                    Console.Write("How many? ");
+                    int drankPotion = Convert.ToInt32(Console.ReadLine());
+                    drinkPotion(drankPotion);
                 }
             }
         }
@@ -324,15 +328,15 @@ namespace Inventory_system
                 Console.WriteLine("Defence: " + defence);
             }
         }
-        public void buyPotion()
+        public void buyPotion(int boughtPotion)
         {
-            if (gold >= 100)
+            if (gold >= boughtPotion * 100)
             {
-                Console.WriteLine("You bought a potion!");
-                potion++;
-                weightPotion++;
+                Console.WriteLine("You bought " + boughtPotion + " potion(s)!");
+                potion += boughtPotion;
+                weightPotion += boughtPotion;
                 Console.WriteLine("Potions: " + potion);
-                gold -= 100;
+                gold -= boughtPotion * 100;
                 Console.WriteLine("Gold: " + gold);
                 weightTotal = weightWeapon + weightArmor + weightPotion;
                 Console.WriteLine("Weight: " + weightTotal);
@@ -345,14 +349,14 @@ namespace Inventory_system
                 Console.WriteLine("Gold: " + gold);
             }
         }
-        public void drinkPotion()
+        public void drinkPotion(int drankPotion)
         {
-            if (potion >= 1)
+            if (potion >= drankPotion)
             {
-                Console.WriteLine("You drank a potion!");
-                potion--;
-                weightPotion--;
-                maxWeight += 5;
+                Console.WriteLine("You drank " + drankPotion + " potion(s)!");
+                potion -= drankPotion;
+                weightPotion -= drankPotion;
+                maxWeight += drankPotion * 5;
                 Console.WriteLine("Potions: " + potion);
                 weightTotal = weightWeapon + weightArmor + weightPotion;
                 Console.WriteLine("Weight: " + weightTotal);
@@ -360,7 +364,7 @@ namespace Inventory_system
             }
             else
             {
-                Console.WriteLine("No potions!");
+                Console.WriteLine("Not enough potions!");
             }
         }
     }
