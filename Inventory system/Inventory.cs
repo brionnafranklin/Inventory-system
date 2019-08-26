@@ -18,6 +18,23 @@ namespace Inventory_system
         private int _maxWeight = 50;
         private int _itemDefence = 0;
         private int _potion = 0;
+        
+
+        private AttackItem dagger = new AttackItem("Dagger", 15, 5);
+        private AttackItem sword = new AttackItem("Sword", 20, 10);
+        private AttackItem bow = new AttackItem("Bow", 25, 15);
+        private AttackItem Warhammer = new AttackItem("Warhammer", 30, 20);
+        private AttackItem bigThickBoi = new AttackItem("Big Thick Boi", 200, 100);
+        private AttackItem[] weaponList = new AttackItem[10];
+        
+        public Inventory()
+        {
+            weaponList[0] = dagger;
+            weaponList[1] = sword;
+            weaponList[2] = bow;
+            weaponList[3] = Warhammer;
+            weaponList[4] = bigThickBoi;
+        }
 
         public int GetItemDamage()
         {
@@ -27,6 +44,11 @@ namespace Inventory_system
         public int GetItemDefence()
         {
             return _itemDefence;
+        }
+        public void test()
+        {
+            int playerHealth = 100;
+            Console.WriteLine(playerHealth);
         }
         public void Menu()
         {
@@ -104,6 +126,7 @@ namespace Inventory_system
             Console.WriteLine("");
 
             //check input
+            /*
             if (choice == "0")
             {
                 Console.WriteLine("Action canceled");
@@ -192,6 +215,8 @@ namespace Inventory_system
             {
                 EquipWeapon();
             }
+        }
+        */
         }
         public void UnequipWeapon()
         {
