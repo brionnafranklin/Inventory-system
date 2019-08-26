@@ -9,18 +9,77 @@ namespace Inventory_system
     class Program
     {
        static void Main(String[]args)
-        {
+       {
             //Inventory inventory = new Inventory();
             //inventory.Menu();
+            string name = "";
+            string choice = "";
 
-            Character player = new Character("Bri");
+            Console.WriteLine("Enter name of party member 1: ");
+            name = Console.ReadLine();
+            while (choice != "1" && choice != "2" && choice != "3")
+            {
+               
+                //display menu
+                Console.WriteLine("\nChoose a class:");
+                Console.WriteLine("1: Knight");
+                Console.WriteLine("2: Rogue");
+                Console.WriteLine("3: Mage");
+                choice = Console.ReadLine();
+                
+            }
+            Character player;
+            if (choice == "1")
+            {
+                player = new Knight(name);
+            }
+            else if (choice == "2")
+            {
+                player = new Rogue(name);
+            }
+            else if (choice == "3")
+            {
+                player = new Mage(name);
+            }
+            else
+            {
+                player = new Character(name);
+            }
             player.Print();
 
-            Character sarah = new Character("Sarah");
-            Character josh = new Character("Josh");
+            
+            Character sarah = new Rogue("Sarah");
+            Character josh = new Mage("Josh");
             sarah.Print();
             josh.Print();
 
+            choice = "";
+            while (choice != "0")
+            {
+               
+                //display menu
+                Console.WriteLine("\nWhose inventory?");
+                Console.WriteLine("0: Exit");
+                Console.WriteLine("1: " + player.Name());
+                Console.WriteLine("2: " + sarah.Name());
+                Console.WriteLine("3: " + josh.Name());
+                choice = Console.ReadLine();
+                if (choice == "1")
+                {
+                    Console.WriteLine(player.Name());
+                    player.OpenInventory();
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine(sarah.Name());
+                    player.OpenInventory();
+                }
+                else if (choice == "3")
+                {
+                    Console.WriteLine(josh.Name());
+                    player.OpenInventory();
+                }
+            }
             player.Experience = 100;
             player.Experience = player.Experience + 200;
             player.Experience++;
@@ -48,6 +107,6 @@ namespace Inventory_system
             Character[] party = { player, sarah, josh, new Character("Jax") };
             Console.ReadKey();
 
-        }
+       }
     }
 }
