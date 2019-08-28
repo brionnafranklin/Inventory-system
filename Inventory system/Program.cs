@@ -10,6 +10,45 @@ namespace Inventory_system
     {
        static void Main(String[]args)
        {
+
+            Monster Doge = new Monster("Doge", 50, 10);
+            Monster Ditto = new Monster("Ditto", 40, 5);
+            Monster AntiDoge = new Monster("Anti Doge", 25, 5);
+            Monster NotDitto = new Monster("Not Ditto", 20, 2);
+
+            //Random random = new Random();
+
+            Monster[] goodTeam = { Doge, Ditto };
+            Monster[] badTeam = { AntiDoge, NotDitto };
+
+            Encounter encounter = new Encounter(goodTeam, badTeam);
+            encounter.Print();
+            encounter.Start();
+            
+
+            //if (random.Next(1, 2) == 1)
+            //{
+            //    Ditto.Print();
+            //}
+            //else if (random.Next(1, 2) == 2)
+            //{
+            //    Doge.Print();
+            //}
+            //else
+            //{
+            //    Console.WriteLine("no");
+            //    Console.ReadKey();
+            //}
+
+            //Doge.Fight(Ditto);
+            //Ditto.Print();
+            //Ditto.Fight(Doge);
+            //Doge.Print();
+
+            Console.ReadKey();
+
+            return;
+
             //Inventory inventory = new Inventory();
             //inventory.Menu();
             string name = "";
