@@ -25,15 +25,28 @@ namespace Inventory_system
         private AttackItem bow = new AttackItem("Bow", 25, 15);
         private AttackItem Warhammer = new AttackItem("Warhammer", 30, 20);
         private AttackItem bigThickBoi = new AttackItem("Big Thick Boi", 200, 100);
-        private AttackItem[] weaponList = new AttackItem[10];
-        
+        private AttackItem[] _weaponList = new AttackItem[10];
+
+        private AttackItem leather = new AttackItem("Leather", 15, 5);
+        private AttackItem elven = new AttackItem("Evlen", 20, 10);
+        private AttackItem dragonScale = new AttackItem("Dragon Scale", 25, 15);
+        private AttackItem dragonBone = new AttackItem("Dragon Bone", 30, 20);
+        private AttackItem theSoulsOfTheInnocent = new AttackItem("The Souls of the Innocent", 200, 100);
+        private AttackItem[] _armorList = new AttackItem[10];
+
         public Inventory()
         {
-            weaponList[0] = dagger;
-            weaponList[1] = sword;
-            weaponList[2] = bow;
-            weaponList[3] = Warhammer;
-            weaponList[4] = bigThickBoi;
+            _weaponList[0] = dagger;
+            _weaponList[1] = sword;
+            _weaponList[2] = bow;
+            _weaponList[3] = Warhammer;
+            _weaponList[4] = bigThickBoi;
+
+            _armorList[0] = leather;
+            _armorList[1] = elven;
+            _armorList[2] = dragonScale;
+            _armorList[3] = dragonBone;
+            _armorList[4] = theSoulsOfTheInnocent;
         }
 
         public int GetItemDamage()
@@ -259,6 +272,7 @@ namespace Inventory_system
             choice = Console.ReadLine();
             Console.WriteLine("");
 
+            /*
             //check input
             if (choice == "0")
             {
@@ -339,6 +353,7 @@ namespace Inventory_system
                     _weightTotal = _weightWeapon + _weightArmor + _weightPotion;
                     Console.WriteLine("Weight: " + _weightTotal);
                 }
+                
                 else
                 {
                     Console.WriteLine("Item is too heavy. Cannot equip.");
@@ -348,7 +363,9 @@ namespace Inventory_system
             {
                 EquipWeapon();
             }
+            */
         }
+        
         public void UnequipArmor()
         {
             if (_itemDefence == 0)
