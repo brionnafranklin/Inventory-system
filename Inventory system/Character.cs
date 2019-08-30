@@ -20,6 +20,7 @@ namespace Inventory_system
         protected int _strength = 10;
         protected int _dexterity = 10;
         protected int _wisdom = 10;
+        protected int _damge = 10;
 
         public Character(string name)
         {
@@ -47,6 +48,10 @@ namespace Inventory_system
         public void OpenInventory()
         {
             inventory.Menu();
+        }
+        public int GetDamage()
+        {
+            return (_strength + inventory.GetItemDamage());
         }
 
         public int Experience

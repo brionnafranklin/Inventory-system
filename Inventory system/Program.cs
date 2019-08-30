@@ -10,7 +10,9 @@ namespace Inventory_system
     {
        static void Main(String[]args)
        {
+            
 
+            /*
             Monster Doge = new Monster("Doge", 50, 10);
             Monster Ditto = new Monster("Ditto", 40, 5);
             Monster AntiDoge = new Monster("Anti Doge", 25, 5);
@@ -46,8 +48,8 @@ namespace Inventory_system
             //Doge.Print();
 
             Console.ReadKey();
-
-            return;
+            */
+            
 
             //Inventory inventory = new Inventory();
             //inventory.Menu();
@@ -118,6 +120,10 @@ namespace Inventory_system
                     Console.WriteLine(josh.Name());
                     player.OpenInventory();
                 }
+            Console.WriteLine(player.GetDamage());
+
+            Console.ReadKey();
+            return;
             }
             player.Experience = 100;
             player.Experience = player.Experience + 200;
