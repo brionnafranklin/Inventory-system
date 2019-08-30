@@ -12,16 +12,19 @@ namespace Inventory_system
        {
             
 
-            /*
+            
             Monster Doge = new Monster("Doge", 50, 10);
             Monster Ditto = new Monster("Ditto", 40, 5);
             Monster AntiDoge = new Monster("Anti Doge", 25, 5);
             Monster NotDitto = new Monster("Not Ditto", 20, 2);
+            Character Me = new Knight("Me");
 
             //Random random = new Random();
 
-            Monster[] goodTeam = { Doge, Ditto };
-            Monster[] badTeam = { AntiDoge, NotDitto };
+            Creature[] goodTeam = { Doge, Ditto, Me};
+            Creature[] badTeam = { AntiDoge, NotDitto };
+
+            Me.OpenInventory();
 
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();
@@ -48,7 +51,7 @@ namespace Inventory_system
             //Doge.Print();
 
             Console.ReadKey();
-            */
+            return;
             
 
             //Inventory inventory = new Inventory();

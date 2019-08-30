@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inventory_system
 {
-    class Character
+    class Character : Creature
     {
         private string _name = "";
         private int _xp = 0;
@@ -15,7 +15,7 @@ namespace Inventory_system
 
         private Inventory inventory = new Inventory();
 
-        protected int _health = 100;
+        
         protected int _mana = 100;
         protected int _strength = 10;
         protected int _dexterity = 10;
@@ -25,13 +25,15 @@ namespace Inventory_system
         public Character(string name)
         {
             _name = name;
+            _health = 100;
+            _maximumHealth = 100;
         }
 
         public string Name()
         {
             return _name;
         }
-        public void Print()
+        public override void Print()
         {
             Console.WriteLine(_name);
             Console.WriteLine("Level: " + _level);
@@ -49,11 +51,14 @@ namespace Inventory_system
         {
             inventory.Menu();
         }
-        public int GetDamage()
+        public override int GetDamage()
         {
             return (_strength + inventory.GetItemDamage());
         }
-
+        public override string GetName()
+        {
+            return _name;
+        }
         public int Experience
         {
             get
@@ -71,6 +76,52 @@ namespace Inventory_system
                         _level++;
                         Console.WriteLine(_name + "'s level increased to " + _level + "!");
                     }
+                }
+            }
+        }
+        public override void Fight(Creature target)
+        {
+            if (Health <= 0)
+            {
+                return;
+            }
+            //get this mon's damage
+            int damage = GetDamage();
+            //subtract damage
+            target.Health -= damage;
+            Console.WriteLine(GetName() + "attack! " + target.GetName() + " takes " + damage);
+
+        }
+        public override void Fight(Creature[]targets)
+        {
+            if (Health <= 0)
+            {
+                return;
+            }
+            bool validInput = false;
+            while (!validInput)
+            {
+                Console.WriteLine("\nWho will" + GetName() + " fight? ");
+                //Print menu
+                
+                
+                //Iterate through targets
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    Creature current = targets[i];
+                    Console.WriteLine((i + 1) + "i " + targets[i].GetName());
+                    //Print each option with a number
+                    
+                }
+
+                string input = Console.ReadLine();
+
+                int choice = Convert.ToInt32(input);
+                if (choice >= 0 && choice < targets.Length + 1)
+                {
+                    validInput = true;
+                    Fight(targets[choice - 1]);
+                    
                 }
             }
         }

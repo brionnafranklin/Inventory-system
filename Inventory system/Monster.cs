@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Inventory_system
 {
-    class Monster
+    class Monster : Creature
     {
         private string _name = "";
-        private int _health = 50;
-        private int _damage = 5;
+
         private int _maximumHealth = 50;
 
         public Monster(string name, int health, int damage)
@@ -21,17 +20,17 @@ namespace Inventory_system
             _damage = damage;
         }
 
-        public string GetName()
+        public override string GetName()
         {
             return _name;
         }
         
-        public int GetDamage()
+        public override int GetDamage()
         {
             return _damage;
         }
 
-        public int Health
+        public override int Health
         {
             get
             {
@@ -50,7 +49,7 @@ namespace Inventory_system
                 }
             }
         }
-        public void Print()
+        public override void Print()
         {
             Console.WriteLine("Monster Type: " + _name);
             Console.WriteLine("Health: " + _health + "/" + _maximumHealth);
@@ -58,7 +57,7 @@ namespace Inventory_system
             //Console.ReadKey();
         }
 
-        public void Fight(Monster target)
+        public override void Fight(Creature target)
         { 
             if (Health <= 0)
             {
@@ -72,7 +71,7 @@ namespace Inventory_system
 
         }
 
-        public void Fight(Monster[]targets)
+        public override void Fight(Creature[]targets)
         {
             if (Health <= 0)
             {
@@ -88,7 +87,7 @@ namespace Inventory_system
                 //Iterate through targets
                 for (int i = 0; i < targets.Length; i++)
                 {
-                    Monster current = targets[i];
+                    Creature current = targets[i];
                     Console.WriteLine((i + 1) + "i " + targets[i].GetName());
                     //Print each option with a number
                     

@@ -274,7 +274,7 @@ namespace Inventory_system
             choice = Console.ReadLine();
             Console.WriteLine("");
 
-            /*
+            
             //check input
             if (choice == "0")
             {
@@ -365,7 +365,7 @@ namespace Inventory_system
             {
                 EquipWeapon();
             }
-            */
+            
         }
         
         public void UnequipArmor()
