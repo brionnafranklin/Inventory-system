@@ -11,11 +11,25 @@ namespace Inventory_system
         private Creature[] _goodMonsters;
         private Creature[] _badMonsters;
 
+
+
         public Encounter(Creature[] team1, Creature[] team2)
         {
             _goodMonsters = team1;
             _badMonsters = team2;
         }
+
+        private int GetTotalExpDrop(Creature[] team)
+        {
+            int exp = 0;
+            for (int i = 0; i < team.Length; i++)
+            {
+                exp += team[i].GetExpDrop();
+
+            }
+            return exp;
+        }
+
         public void Print()
         {
             for (int i = 0; i < _goodMonsters.Length; i++)
@@ -76,6 +90,7 @@ namespace Inventory_system
                     else if (currentMonster.Health <= 0)
                     {
                         badIsAlive = false;
+   
                     }
                 }
 
@@ -87,6 +102,30 @@ namespace Inventory_system
                 else
                 {
                     stillFighting = false;
+                    if (goodIsAlive)
+                    {
+                        foreach (Creature cr in _goodMonsters)
+                        {
+
+                            if (cr is Character)
+                            {
+                                Character ch = (Character)cr;
+                                ch.Experience += GetTotalExpDrop(_badMonsters);
+                            }
+                        }
+                    }
+                    else if (badIsAlive)
+                    {
+                        foreach (Creature cr in _badMonsters)
+                        {
+
+                            if (cr is Character)
+                            {
+                                Character ch = (Character)cr;
+                                ch.Experience += GetTotalExpDrop(_goodMonsters);
+                            }
+                        }
+                    }
                 }
                 Print();
             }

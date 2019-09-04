@@ -14,6 +14,7 @@ namespace Inventory_system
         private int _south;
         private int _east;
         private int _west;
+        private string _hidden;
 
         public Scene(string name, int northID, int southID, int easttID, int westID, string description)
         {
@@ -23,6 +24,18 @@ namespace Inventory_system
             _south = southID;
             _east = easttID;
             _west = westID;
+            _hidden = "Nothing was found";
+        }
+
+        public Scene(string name, int northID, int southID, int easttID, int westID, string description, string hidden)
+        {
+            _name = name;
+            _description = description;
+            _north = northID;
+            _south = southID;
+            _east = easttID;
+            _west = westID;
+            _hidden = hidden;
         }
         public string GetName()
         {
@@ -36,10 +49,10 @@ namespace Inventory_system
         {
             Console.WriteLine("choose direction (N,S,W,E)");
             string choice = "";
-            while (choice != "N" && choice != "S" && choice != "E" && choice != "W") 
+            while (choice != "N" && choice != "S" && choice != "E" && choice != "W")
             {
-                
-                
+
+
                 choice = choice.ToUpper();
                 choice = Console.ReadLine();
             }
@@ -63,6 +76,12 @@ namespace Inventory_system
             {
                 return -1;
             }
+        }
+
+
+        public string GetHidden()
+        {
+            return _hidden;
         }
     }
 }

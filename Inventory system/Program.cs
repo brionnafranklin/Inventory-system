@@ -8,8 +8,10 @@ namespace Inventory_system
 {
     class Program
     {
-       static void Main(String[]args)
+        public static Random random = new Random();
+        static void Main(String[]args)
        {
+            /*
             //0:cort
             //1: gate
             //2:grave
@@ -24,7 +26,7 @@ namespace Inventory_system
             Scene[] scenes = { courtyard, castleGate, graveyard, village };
             Map map = new Map(0, scenes);
 
-            /*
+            
             map.PrintCurrentScene();
             map.CurrentSceneID = 1;
             map.PrintCurrentScene();
@@ -33,25 +35,26 @@ namespace Inventory_system
             map.CurrentSceneID = 3;
             map.PrintCurrentScene();
             map.CurrentSceneID = 4;
-            */
+            
             map.Menu();
 
             Console.ReadKey();
+            */
 
 
 
-
-                return;
+               
             
-            Monster Doge = new Monster("Doge", 50, 10);
-            Monster Ditto = new Monster("Ditto", 40, 5);
-            Monster AntiDoge = new Monster("Anti Doge", 25, 5);
-            Monster NotDitto = new Monster("Not Ditto", 20, 2);
+            Monster Doge = new Monster("Doge", 75, 10, 500);
+            Monster Ditto = new Monster("Ditto", 50, 5, 500);
+            Monster AntiDoge = new Monster("Anti Doge", 40, 5, 250);
+            Monster NotDitto = new Monster("Not Ditto", 25, 2, 250);
             Character Me = new Knight("Me");
+
 
             //Random random = new Random();
 
-            Creature[] goodTeam = { Doge, Ditto, Me};
+            Creature[] goodTeam = { Doge, Ditto, Me };
             Creature[] badTeam = { AntiDoge, NotDitto };
 
             Me.OpenInventory();
@@ -59,6 +62,8 @@ namespace Inventory_system
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();
             encounter.Start();
+
+            
             
 
             //if (random.Next(1, 2) == 1)

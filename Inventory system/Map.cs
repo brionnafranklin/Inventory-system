@@ -60,6 +60,7 @@ namespace Inventory_system
                 Console.WriteLine("1: Travel");
                 Console.WriteLine("2: Save");
                 Console.WriteLine("3: Load");
+                Console.WriteLine("4: Search");
                 choice = Console.ReadLine();
 
                 if (choice == "1")
@@ -73,6 +74,10 @@ namespace Inventory_system
                 else if (choice == "3")
                 {
                     load("save.txt");
+                }
+                else if (choice == "4")
+                {
+                    Search();
                 }
             }
         }
@@ -93,6 +98,14 @@ namespace Inventory_system
                 Console.WriteLine("There is nothing in that direction.");
             }
         }
+
+        public void Search()
+        {
+            if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
+            {
+                Console.WriteLine(_sceneList[_currentLocation].GetHidden());
+            }
+        }
         public void save(string path)
         {
             StreamWriter writer = File.CreateText(path);
@@ -101,9 +114,16 @@ namespace Inventory_system
         }
         public void load(string path)
         {
-            StreamReader reader = File.OpenText(path);
-            CurrentSceneID = Convert.ToInt32(reader.ReadLine());
-            reader.Close();
+            if (File.Exists(path))
+            {
+                StreamReader reader = File.OpenText(path);
+                CurrentSceneID = Convert.ToInt32(reader.ReadLine());
+                reader.Close();
+            }
+            else
+            {
+                Console.WriteLine("Save file not found.");
+            }
         }
 
 

@@ -12,7 +12,7 @@ namespace Inventory_system
 
         private int _maximumHealth = 50;
 
-        public Monster(string name, int health, int damage)
+        public Monster(string name, int health, int damage, int expDrop)
         {
             _name = name;
             _health = health;
@@ -24,7 +24,7 @@ namespace Inventory_system
         {
             return _name;
         }
-        
+
         public override int GetDamage()
         {
             return _damage;
@@ -58,7 +58,7 @@ namespace Inventory_system
         }
 
         public override void Fight(Creature target)
-        { 
+        {
             if (Health <= 0)
             {
                 return;
@@ -66,17 +66,23 @@ namespace Inventory_system
             //get this mon's damage
             int damage = GetDamage();
             //subtract damage
-            target.Health -= damage;
+            target.Health -= damage - target.GetDefence();
             Console.WriteLine(GetName() + "attack! " + target.GetName() + " takes " + damage);
 
         }
 
-        public override void Fight(Creature[]targets)
+        public override void Fight(Creature[] targets)
         {
             if (Health <= 0)
             {
+                
                 return;
             }
+
+
+            int choice = Program.random.Next(0, targets.Length);
+            Fight(targets[choice]);
+            /*
             bool validInput = false;
             while (!validInput)
             {
@@ -102,10 +108,10 @@ namespace Inventory_system
                     Fight(targets[choice - 1]);
                     
                 }
-            }
+                */
         }
-
     }
 
+}   
 
-}
+

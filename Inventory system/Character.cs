@@ -55,6 +55,10 @@ namespace Inventory_system
         {
             return (_strength + inventory.GetItemDamage());
         }
+        public override int GetDefence()
+        {
+            return (inventory.GetItemDefence());
+        }
         public override string GetName()
         {
             return _name;

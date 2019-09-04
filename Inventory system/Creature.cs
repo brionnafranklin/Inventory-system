@@ -11,6 +11,7 @@ namespace Inventory_system
         protected int _health = 10;
         protected int _maximumHealth = 10;
         protected int _damage = 5;
+        protected int _expDrop = 250;
         public virtual int Health
         {
             get
@@ -41,6 +42,15 @@ namespace Inventory_system
         public virtual int GetDamage()
         {
             return 0;
+        }
+        public virtual int GetDefence()
+
+        {
+            return 0;
+        }
+        public virtual int GetExpDrop()
+        {
+            return _expDrop;
         }
         public virtual string GetName()
         {

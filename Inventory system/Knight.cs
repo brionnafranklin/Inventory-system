@@ -11,10 +11,12 @@ namespace Inventory_system
         public Knight(string name) : base(name)
         {
             _health = 300;
+            _maximumHealth = 300;
             _mana = 50;
             _strength = 18;
             _dexterity = 8;
             _wisdom = 10;
+            _expDrop = 1000;
         }
     }
 }
