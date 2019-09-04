@@ -10,8 +10,38 @@ namespace Inventory_system
     {
        static void Main(String[]args)
        {
-            
+            //0:cort
+            //1: gate
+            //2:grave
+            //3: village
+                                                       //N, S,  E, W
 
+            Scene courtyard = new Scene("Courtyard",     1, 3, -1, 2, "The courtyard is wide and open to the sky. There is a small garden nearby. There are exits to the north, south, east, and west");
+            Scene castleGate = new Scene("Castle Gate", -1, 0, -1, -1, "There is a massive gate at the entrance to the castle. It appears to be locked. There is an exit to the south.");
+            Scene graveyard = new Scene("Graveyard",    -1, -1, 0, -1, "The graveyard is pretty spooky. Nontheless, you pay respects. There is an exit to the east");
+            Scene village = new Scene("Village",         0, -1, -1, -1, "The village is a bunch of buildings. The exit is to North");
+
+            Scene[] scenes = { courtyard, castleGate, graveyard, village };
+            Map map = new Map(0, scenes);
+
+            /*
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 1;
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 2;
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 3;
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 4;
+            */
+            map.Menu();
+
+            Console.ReadKey();
+
+
+
+
+                return;
             
             Monster Doge = new Monster("Doge", 50, 10);
             Monster Ditto = new Monster("Ditto", 40, 5);
