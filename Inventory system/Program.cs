@@ -11,20 +11,31 @@ namespace Inventory_system
         public static Random random = new Random();
         static void Main(String[]args)
        {
-            /*
+            Monster Doge = new Monster("Doge", 75, 10, 500);
+            Monster Ditto = new Monster("Ditto", 50, 5, 500);
+            Monster AntiDoge = new Monster("Anti Doge", 40, 5, 250);
+            Monster NotDitto = new Monster("Not Ditto", 25, 2, 250);
+            Character Me = new Knight("Me");
+
+
+            Creature[] goodTeam = { Doge, Ditto, Me };
+            Creature[] badTeam = { AntiDoge, NotDitto };
+            Creature[] empty = { };
+
             //0:cort
             //1: gate
             //2:grave
             //3: village
-                                                       //N, S,  E, W
+            //                                           N, S,  E, W
 
-            Scene courtyard = new Scene("Courtyard",     1, 3, -1, 2, "The courtyard is wide and open to the sky. There is a small garden nearby. There are exits to the north, south, east, and west");
-            Scene castleGate = new Scene("Castle Gate", -1, 0, -1, -1, "There is a massive gate at the entrance to the castle. It appears to be locked. There is an exit to the south.");
-            Scene graveyard = new Scene("Graveyard",    -1, -1, 0, -1, "The graveyard is pretty spooky. Nontheless, you pay respects. There is an exit to the east");
-            Scene village = new Scene("Village",         0, -1, -1, -1, "The village is a bunch of buildings. The exit is to North");
+            Scene courtyard = new Scene("Courtyard",     1, 3, -1, 2, empty, "The courtyard is wide and open to the sky. There is a small garden nearby. There are exits to the north, south, east, and west");
+            Scene castleGate = new Scene("Castle Gate", -1, 0, -1, -1, empty, "There is a massive gate at the entrance to the castle. It appears to be locked. There is an exit to the south.");
+            Scene graveyard = new Scene("Graveyard",    -1, -1, 0, -1, badTeam, "The graveyard is pretty spooky. Nontheless, you pay respects. There is an exit to the east");
+            Scene village = new Scene("Village",         0, -1, -1, -1, empty, "The village is a bunch of buildings. The exit is to North");
 
             Scene[] scenes = { courtyard, castleGate, graveyard, village };
-            Map map = new Map(0, scenes);
+            Map map = new Map(0, scenes, goodTeam);
+
 
             
             map.PrintCurrentScene();
@@ -39,32 +50,27 @@ namespace Inventory_system
             map.Menu();
 
             Console.ReadKey();
-            */
+            
 
 
 
                
             
-            Monster Doge = new Monster("Doge", 75, 10, 500);
-            Monster Ditto = new Monster("Ditto", 50, 5, 500);
-            Monster AntiDoge = new Monster("Anti Doge", 40, 5, 250);
-            Monster NotDitto = new Monster("Not Ditto", 25, 2, 250);
-            Character Me = new Knight("Me");
+
 
 
             //Random random = new Random();
 
-            Creature[] goodTeam = { Doge, Ditto, Me };
-            Creature[] badTeam = { AntiDoge, NotDitto };
-
+            
             Me.OpenInventory();
 
+            /*
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();
             encounter.Start();
+            */
 
-            
-            
+
 
             //if (random.Next(1, 2) == 1)
             //{

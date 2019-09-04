@@ -11,12 +11,16 @@ namespace Inventory_system
     {
         private int _currentLocation = 0;
         private Scene[] _sceneList;
+        private Creature[] _players;
 
-        public Map(int startingSceneID, Scene[] scenes)
+        public Map(int startingSceneID, Scene[] scenes, Creature[] players)
         {
             _currentLocation = startingSceneID;
             _sceneList = scenes;
+            _players = players;
         }
+
+
         public void PrintCurrentScene()
         {
             if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
@@ -55,6 +59,9 @@ namespace Inventory_system
             while (choice != "0")
             {
                 PrintCurrentScene();
+
+                
+
                 Console.WriteLine("\nMenu:");
                 Console.WriteLine("0: Exit");
                 Console.WriteLine("1: Travel");
@@ -97,6 +104,7 @@ namespace Inventory_system
             {
                 Console.WriteLine("There is nothing in that direction.");
             }
+            checkForEnemies();
         }
 
         public void Search()
@@ -104,6 +112,18 @@ namespace Inventory_system
             if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
             {
                 Console.WriteLine(_sceneList[_currentLocation].GetHidden());
+            }
+        }
+        public void checkForEnemies()
+        {
+            if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
+            {
+                Scene currentscene = _sceneList[_currentLocation];
+                if (currentscene.GetCleared() == false)
+                {
+                    Encounter encounter = new Encounter(_players, currentscene.GetEnemies());
+                    encounter.Start();
+                }
             }
         }
         public void save(string path)
