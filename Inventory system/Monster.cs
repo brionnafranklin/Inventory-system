@@ -10,7 +10,7 @@ namespace Inventory_system
     {
         private string _name = "";
 
-        private int _maximumHealth = 50;
+        
 
         public Monster(string name, int health, int damage, int expDrop)
         {

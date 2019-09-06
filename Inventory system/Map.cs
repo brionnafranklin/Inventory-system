@@ -12,7 +12,7 @@ namespace Inventory_system
         private int _currentLocation = 0;
         private Scene[] _sceneList;
         private Creature[] _players;
-
+        private int playerAmount;
         public Map(int startingSceneID, Scene[] scenes, Creature[] players)
         {
             _currentLocation = startingSceneID;
@@ -129,7 +129,36 @@ namespace Inventory_system
         public void save(string path)
         {
             StreamWriter writer = File.CreateText(path);
+            playerAmount = _players.Length;
+            writer.WriteLine(playerAmount);
             writer.WriteLine(CurrentSceneID);
+            foreach (Creature player in _players)
+            {
+                
+                if (player is Character)
+                {
+                    Character ch = (Character)player;
+
+                    writer.WriteLine(player.GetName());
+            
+                    writer.WriteLine(ch.Experience);
+            
+                    writer.WriteLine(ch.GetLevel());
+
+                    if (player is Knight)
+                    {
+                        writer.WriteLine("Knight");
+                    }
+                    else if (player is Rogue)
+                    {
+                        writer.WriteLine("Rogue");
+                    }
+                    else if (player is Mage)
+                    {
+                        writer.WriteLine("Mage");
+                    }
+                }
+            }
             writer.Close();
         }
         public void load(string path)
@@ -138,6 +167,35 @@ namespace Inventory_system
             {
                 StreamReader reader = File.OpenText(path);
                 CurrentSceneID = Convert.ToInt32(reader.ReadLine());
+                playerAmount = Convert.ToInt32(reader.ReadLine());
+                string name = "";
+                int lvl = 0;
+                int xp = 0;
+                string className = "";
+
+                Creature[] players = new Creature[playerAmount];
+                for (int i = 0; i < playerAmount; i++)
+                {
+                    Character player = new Character("null");
+                    name = reader.ReadLine();
+                    lvl = Convert.ToInt32(reader.ReadLine());
+                    xp = Convert.ToInt32(reader.ReadLine());
+                    className = reader.ReadLine();
+                    if (className == "Knight")
+                    {
+                        player = new Knight(name);
+                    }
+                    else if (className == "Rogue")
+                    {
+                        player = new Rogue(name);
+                    }
+                    else if (className == "Mage")
+                    {
+                        player = new Mage(name);
+                    }
+                    player.Load(lvl, xp);
+                    players[i] = player;
+                }
                 reader.Close();
             }
             else

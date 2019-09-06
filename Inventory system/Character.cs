@@ -33,6 +33,7 @@ namespace Inventory_system
         {
             return _name;
         }
+        
         public override void Print()
         {
             Console.WriteLine(_name);
@@ -62,6 +63,15 @@ namespace Inventory_system
         public override string GetName()
         {
             return _name;
+        }
+        public int GetLevel()
+        {
+            return _level;
+        }
+        public void Load(int level, int exp)
+        {
+            _level = level;
+            _xp = exp;
         }
         public int Experience
         {

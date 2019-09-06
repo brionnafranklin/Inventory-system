@@ -56,6 +56,7 @@ namespace Inventory_system
         {
             return "";
         }
+        
         public virtual void Print()
         {
           
